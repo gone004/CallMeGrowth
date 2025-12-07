@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Modern, professional palette for digital marketing agency */
+    --background: 220 20% 98%;
+    --foreground: 220 30% 15%;
+
+    --card: 220 20% 96%;
+    --card-foreground: 220 30% 15%;
+
+    --popover: 220 20% 98%;
+    --popover-foreground: 220 30% 15%;
+
+    --primary: 30 6.25% 25.098%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 25 5.2632% 44.7059%;
+    --secondary-foreground: 220 30% 15%;
+
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 15% 45%;
+
+    --accent: 240 3.7037% 15.8824%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 12 6.4935% 15.098%;
+
+    --radius: 0.75rem;
+
+    /* Custom brand tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(250 70% 55%), hsl(280 70% 60%));
+    --gradient-accent: linear-gradient(135deg, hsl(170 70% 45%), hsl(200 70% 50%));
+    --gradient-hero: linear-gradient(180deg, hsl(250 70% 55% / 0.05), transparent);
+    --surface-elevated: 220 20% 100%;
+    --shadow-soft: 220 30% 15%;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 220 15% 95%;
+
+    --card: 220 25% 12%;
+    --card-foreground: 220 15% 95%;
+
+    --popover: 220 25% 8%;
+    --popover-foreground: 220 15% 95%;
+
+    --primary: 240 5.2023% 33.9216%;
+    --primary-foreground: 210 6.8966% 88.6275%;
+
+    --secondary: 215 16.318% 46.8627%;
+    --secondary-foreground: 220 15% 95%;
+
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 15% 55%;
+
+    --accent: 215 25% 26.6667%;
+    --accent-foreground: 218 10.6145% 64.902%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 250 70% 65%;
+
+    --surface-elevated: 220 25% 14%;
+    --gradient-hero: linear-gradient(180deg, hsl(250 70% 65% / 0.1), transparent);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .card-hover {
+    @apply transition-all duration-500 hover:scale-[1.02];
+    box-shadow: 0 4px 20px -4px hsl(var(--shadow-soft) / 0.1);
+  }
+
+  .card-hover:hover {
+    box-shadow: 0 20px 40px -10px hsl(var(--shadow-soft) / 0.15);
+  }
+
+  .pill-nav {
+    @apply rounded-full bg-[hsl(var(--surface-elevated))] backdrop-blur-lg border border-border/50;
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-bg {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-accent-bg {
+    background: var(--gradient-accent);
+  }
+
+  /* Animation keyframes */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Stagger animations */
+  .stagger-1 {
+    animation-delay: 0.1s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .stagger-2 {
+    animation-delay: 0.2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .stagger-3 {
+    animation-delay: 0.3s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .stagger-4 {
+    animation-delay: 0.4s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .stagger-5 {
+    animation-delay: 0.5s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .stagger-6 {
+    animation-delay: 0.6s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+}
