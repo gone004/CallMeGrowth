@@ -63,7 +63,7 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => document.getElementById("WhyUs")?.scrollIntoView({ behavior: "smooth" })}
+                  onClick={() => document.getElementById("why-us")?.scrollIntoView({ behavior: "smooth" })}
                   className="hover:text-primary transition-colors"
                 >
                   why us

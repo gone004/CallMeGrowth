@@ -46,7 +46,7 @@ const scrollToSection = (id: string) => {
         <div className="flex items-center justify-between h-14 sm:h-16 pill-nav px-4 sm:px-6">
           {/* Logo */}
           <div className="flex items-center min-w-0">
-            <a href="/" className="flex items-center gap-2">
+            <a href="/CallMeGrowth/" className="flex items-center gap-2">
               <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center">
                 <img src="src/assets/logo.png" alt="" />
               </div>
