@@ -17,27 +17,33 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
+    const subject = `New message from ${formData.name}`;
+
     const form = e.target as HTMLFormElement;
     const formDataToSend = new FormData(form);
     formDataToSend.append("access_key", "18d12e38-7f8e-41a3-b4cd-a4a9b57d251b");
-    formDataToSend.append("subject", "New Contact Form Submission from CallMeGrowth");
-    formDataToSend.append("from_name", "CallMeGrowth Website");
-    
+    formDataToSend.append("from_name", formData.name);   // user's full name
+    formDataToSend.append("subject", subject);           // dynamic subject
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("company", formData.company);
+    formDataToSend.append("phone", formData.phone);
+    formDataToSend.append("message", formData.message);
+
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formDataToSend
       });
-      
+
       const data = await response.json();
-      
+
       if (data.success) {
         toast({
           title: "Message sent!",
           description: "We'll get back to you as soon as possible.",
         });
-        
+
         // Reset form
         setFormData({
           name: "",
@@ -99,7 +105,7 @@ const ContactSection = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-medium flex items-center gap-2">
-                    <User className="w-4 h-4" /> Full Name 
+                    <User className="w-4 h-4" /> Full Name
                   </label>
                   <Input
                     required
@@ -111,7 +117,7 @@ const ContactSection = () => {
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium flex items-center gap-2">
-                    <Mail className="w-4 h-4" /> Email Address 
+                    <Mail className="w-4 h-4" /> Email Address
                   </label>
                   <Input
                     required
