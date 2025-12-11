@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate, useLocation } from "react-router-dom";
+import logoImage from "@/assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -30,13 +34,25 @@ const Header = () => {
     }
   };
 
-const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
+  const scrollToSection = (id: string) => {
+    setIsMenuOpen(false);
+    
+    // If we're not on the home page, navigate there first
+    if (location.pathname !== "/") {
+      navigate("/");
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
     } else {
-      window.location.href = `/#${id}`;
+      // We're already on home page, just scroll
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -46,12 +62,12 @@ const scrollToSection = (id: string) => {
         <div className="flex items-center justify-between h-14 sm:h-16 pill-nav px-4 sm:px-6">
           {/* Logo */}
           <div className="flex items-center min-w-0">
-            <a href="/CallMeGrowth/" className="flex items-center gap-2">
+            <button onClick={() => navigate("/")} className="flex items-center gap-2">
               <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center">
-                <img src="src/assets/logo.png" alt="" />
+                <img src={logoImage} alt="CallMeGrowth Logo" />
               </div>
               <span className="text-base sm:text-xl font-bold truncate">CallMeGrowth</span>
-            </a>
+            </button>
           </div>
 
           {/* Desktop Navigation */}

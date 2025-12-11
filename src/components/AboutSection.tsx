@@ -28,32 +28,7 @@ const AboutSection = () => {
             <p className="text-xl font-semibold text-foreground">
               CallMeGrowth is where performance meets passion, and where your brand's next chapter begins.
             </p>
-          </div>
-
-          {/* Feature highlights */}
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 rounded-2xl gradient-bg mx-auto mb-4 flex items-center justify-center">
-                <Target className="w-8 h-8 text-primary-foreground" />
-              </div>
-              <h3 className="font-bold text-lg mb-2">Strategic Focus</h3>
-              <p className="text-muted-foreground">Data-driven strategies tailored to your unique goals</p>
-            </div>
-            <div className="text-center p-6">
-              <div className="w-16 h-16 rounded-2xl gradient-accent-bg mx-auto mb-4 flex items-center justify-center">
-                <Sparkles className="w-8 h-8 text-accent-foreground" />
-              </div>
-              <h3 className="font-bold text-lg mb-2">Creative Excellence</h3>
-              <p className="text-muted-foreground">Compelling content that captures and converts</p>
-            </div>
-            <div className="text-center p-6">
-              <div className="w-16 h-16 rounded-2xl gradient-bg mx-auto mb-4 flex items-center justify-center">
-                <TrendingUp className="w-8 h-8 text-primary-foreground" />
-              </div>
-              <h3 className="font-bold text-lg mb-2">Proven Results</h3>
-              <p className="text-muted-foreground">Measurable outcomes that drive real business growth</p>
-            </div>
-          </div>
+          </div>          
         </div>
       </div>
     </section>

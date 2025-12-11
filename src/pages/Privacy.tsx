@@ -1,8 +1,21 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { MapPin } from "lucide-react";
 
 const Privacy = () => {
+  // Scroll to top instantly when page loads
+  useEffect(() => {
+    // Temporarily disable smooth scroll
+    document.documentElement.classList.add('no-smooth-scroll');
+    window.scrollTo({ top: 0, left: 0 });
+    
+    // Re-enable smooth scroll after a brief delay
+    setTimeout(() => {
+      document.documentElement.classList.remove('no-smooth-scroll');
+    }, 10);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
@@ -150,7 +163,7 @@ const Privacy = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4">13. Contact</h2>
             <p className="text-muted-foreground">
-              For questions or concerns regarding this privacy policy or your personal data, please contact us at: info@callmegrowth.com
+              For questions or concerns regarding this privacy policy or your personal data, please contact us at: <a href="mailto:info@callmegrowth.com" className="text-primary hover:underline">info@callmegrowth.com</a>
             </p>
           </section>
 

@@ -1,9 +1,21 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { MapPin } from "lucide-react";
 
-
 const Terms = () => {
+  // Scroll to top instantly when page loads
+  useEffect(() => {
+    // Temporarily disable smooth scroll
+    document.documentElement.classList.add('no-smooth-scroll');
+    window.scrollTo({ top: 0, left: 0 });
+    
+    // Re-enable smooth scroll after a brief delay
+    setTimeout(() => {
+      document.documentElement.classList.remove('no-smooth-scroll');
+    }, 10);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
@@ -14,7 +26,8 @@ const Terms = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border text-sm text-muted-foreground animate-slide-down">
             <MapPin className="w-4 h-4" />
               <span>Arkos g. 1-15, Klevinės vs., LT-14180 Vilniaus r., Latvia.</span>
-          </div>          <h1 className="text-4xl md:text-5xl font-bold leading-tight animate-slide-down">
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight animate-slide-down">
             Terms of Use
           </h1>
         </div>
@@ -22,7 +35,7 @@ const Terms = () => {
         <div className="prose prose-lg max-w-none space-y-8">
           <section>
             <p className="text-muted-foreground">
-              Welcome to CallMeGrowth. By accessing or using our website, services, or products, you agree to comply with these terms. If you do not agree, please refrain from using our services.
+              Welcome to CallMeGrowth. By accessing or using our website <a href="http://callmegrowth.com/" className="text-primary hover:underline">callmegrowth.com</a>, services, or products (collectively, the "services"), you agree to comply with these terms. If you do not agree, please refrain from using our services."
             </p>
           </section>
 
@@ -90,7 +103,7 @@ const Terms = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4">9. Contact</h2>
             <p className="text-muted-foreground">
-              For questions or concerns regarding these terms, please contact us at: info@callmegrowth.com
+              For questions or concerns regarding these terms, please contact us at: <a href="mailto:info@callmegrowth.com" className="text-primary hover:underline">info@callmegrowth.com</a>
             </p>
           </section>
 

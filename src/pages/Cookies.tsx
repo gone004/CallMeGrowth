@@ -1,8 +1,21 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { MapPin } from "lucide-react";
 
 const Cookies = () => {
+  // Scroll to top instantly when page loads
+  useEffect(() => {
+    // Temporarily disable smooth scroll
+    document.documentElement.classList.add('no-smooth-scroll');
+    window.scrollTo({ top: 0, left: 0 });
+    
+    // Re-enable smooth scroll after a brief delay
+    setTimeout(() => {
+      document.documentElement.classList.remove('no-smooth-scroll');
+    }, 10);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
@@ -67,7 +80,7 @@ const Cookies = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4">6. Contact us</h2>
             <p className="text-muted-foreground">
-              If you have any questions or concerns about our cookies, reach out to us at: info@callmegrowth.com
+              If you have any questions or concerns about our cookies, reach out to us at: <a href="mailto:info@callmegrowth.com" className="text-primary hover:underline">info@callmegrowth.com</a>
             </p>
           </section>
 

@@ -1,7 +1,31 @@
 import { Mail, MapPin } from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import logoImage from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const scrollToSection = (id: string) => {
+    // If we're not on the home page, navigate there first
+    if (location.pathname !== "/") {
+      navigate("/");
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      // We're already on home page, just scroll
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <footer className="border-t border-border bg-card">
@@ -11,9 +35,9 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex flex-col gap-2">
-              <img 
-                src="src/assets/logo.png" 
-                alt="CallMeGrowth" 
+              <img
+                src={logoImage}
+                alt="CallMeGrowth"
                 className="w-16 h-18"
               />
               <span className="text-xl font-bold">CallMeGrowth</span>
@@ -38,40 +62,40 @@ const Footer = () => {
             <h3 className="font-bold mb-4">Quick Links</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
-                <button 
-                  onClick={() => document.getElementById("home")?.scrollIntoView({ behavior: "smooth" })}
+                <button
+                  onClick={() => scrollToSection("home")}
                   className="hover:text-primary transition-colors"
                 >
                   Home
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+                <button
+                  onClick={() => scrollToSection("about")}
                   className="hover:text-primary transition-colors"
                 >
                   About Us
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+                <button
+                  onClick={() => scrollToSection("services")}
                   className="hover:text-primary transition-colors"
                 >
                   Services
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => document.getElementById("why-us")?.scrollIntoView({ behavior: "smooth" })}
+                <button
+                  onClick={() => scrollToSection("why-us")}
                   className="hover:text-primary transition-colors"
                 >
-                  why us
+                  Why us
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                <button
+                  onClick={() => scrollToSection("contact")}
                   className="hover:text-primary transition-colors"
                 >
                   Contact
@@ -85,13 +109,31 @@ const Footer = () => {
             <h3 className="font-bold mb-4">Legal</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
-                <a href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</a>
+                <Link 
+                  to="/privacy" 
+                  className="hover:text-primary transition-colors"
+                  onClick={() => setTimeout(() => window.scrollTo(0, 0), 0)}
+                >
+                  Privacy Policy
+                </Link>
               </li>
               <li>
-                <a href="/terms" className="hover:text-primary transition-colors">Terms of Service</a>
+                <Link 
+                  to="/terms" 
+                  className="hover:text-primary transition-colors"
+                  onClick={() => setTimeout(() => window.scrollTo(0, 0), 0)}
+                >
+                  Terms of Service
+                </Link>
               </li>
               <li>
-                <a href="/cookies" className="hover:text-primary transition-colors">Cookie Policy</a>
+                <Link 
+                  to="/cookies" 
+                  className="hover:text-primary transition-colors"
+                  onClick={() => setTimeout(() => window.scrollTo(0, 0), 0)}
+                >
+                  Cookie Policy
+                </Link>
               </li>
             </ul>
           </div>
